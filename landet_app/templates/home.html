@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Detection App</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Calibri, sans-serif;
+            background-color: #cff9ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 600px;
+            transition: transform 0.3s;
+        }
+        .container:hover {
+            transform: scale(1.02);
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #00796b;
+			background-color: #e8f8f9;
+			border-radius: 10px;
+			border: 1px solid green;
+        }
+        h2 {
+            font-size: 1.5em;
+            color: rgb(0, 0, 0);
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 15px;
+            font-size: 1.2em;
+            border: 2px solid #00796b;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus {
+            border-color: #004d40; /* Darker teal */
+            outline: none;
+        }
+        input[type="submit"] {
+            padding: 15px 30px;
+            font-size: 1.2em; /* Responsive font size */
+            border: none;
+            border-radius: 5px;
+            background-color: #00796b;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #004d40; /* Darker teal on hover */
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 2.0em; /* Responsive font size */
+            color: #00796b;
+            font-weight: bold;
+        }
+        .loading {
+            display: none;
+            font-size: 1.2em;
+            color: #00796b;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em; /* Smaller font size on mobile */
+            }
+            h2 {
+                font-size: 1.2em; /* Smaller font size on mobile */
+            }
+            input[type="text"], input[type="submit"] {
+                font-size: 1em; /* Smaller font size on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Language Detection App</h1>
+        <h2>This app identifies various languages in seconds!</h2>
+        <h2>Supported languages: English, Spanish, French, German, Portuguese, and many more!</h2>
+        <form id="languageForm" method="POST">
+            <input type="text" name="txt" placeholder="Enter text to detect language..." required />
+            <br/>
+            <input type="submit" value="Find Language" />
+        </form>
+        <div class="loading" id="loadingMessage">Detecting language...</div>
+        <h2 class="result">{{ msg }}</h2>
+    </div>
+
+    <script>
+        document.getElementById("languageForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const loadingMessage = document.getElementById("loadingMessage");
+            loadingMessage.style.display = "block"; // Show loading message
+            
+            // Simulate form submission (use fetch or AJAX in real scenarios)
+            this.submit(); // Submit the form normally to Flask
+        });
+    </script>
+</body>
+</html>
